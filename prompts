@@ -1,0 +1,27 @@
+How to create a dockerfile and run nodejs project inside docker.
+
+I want to create a nodejs project using mvc pattern. I want to use express.js, ejs server side rendering, mysql database, typescript and scss. How to create the project? Which packages should I install? How should the project structure like?
+
+I want to use typescript on frontend aswell.
+If I execute "npm run watch", I wat to compile scss and ts on every save.
+
+Give me an example tsconfig.json and main.ts
+
+How to use rest api for this project?
+
+Create an openapi yaml.
+
+// Rosszul működött a docker, ezért
+Remove docker from this project.
+How to run this project in docker? Create the appropriate files for it.
+Install appropriate modules.
+
+I want to use enums/PageDefinitions enum in routes/api.ts then translate it into js using npm run watch how?
+
+If I change a file I have to restart docker. I do not want to restart it every time during coding.
+
+Szedd ki a dockerből a watch:fe-ts, watch:server és watch:scss dolgokat.
+Ezek csak akkor fussanak le, ha én elindítom terminálban az npm run watch funkciót ehhez gruntot használnék ami már fel van konfigurálva.
+A docker ne fordítsa le a ts és scss fájlokat, de ha van módosítás valamelyik fájlban akkor azt érzékelje tehát legyen developer módban.
+
+Vajon a docker compose up miért nem indul el?

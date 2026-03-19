@@ -1,0 +1,46 @@
+{
+  "name": "korus-weboldal",
+  "version": "1.0.0",
+  "description": "Programrendszerek fejlesztese beadando.",
+  "repository": {
+    "type": "git",
+    "url": "korus-weboldal"
+  },
+  "license": "ISC",
+  "author": "Kovács János András",
+  "type": "module",
+  "main": "dist-server/server/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:server": "tsc",
+    "build:fe-ts": "esbuild src/client/ts/main.ts --bundle --outfile=public/js/bundle.js --minify",
+    "build:scss": "sass src/client/scss/main.scss public/css/style.css",
+    "build": "npm run build:server && npm run build:fe-ts && npm run build:scss",
+    "watch:server": "npx nodemon --exec \"node --loader ts-node/esm\" src/server/app.ts",
+    "watch:fe-ts": "esbuild src/client/ts/main.ts --bundle --outfile=public/js/bundle.js --watch",
+    "watch:scss": "sass --watch src/client/scss/main.scss:public/css/style.css",
+    "watch": "grunt",
+    "start": "node dist-server/app.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.19.0",
+    "sass": "^1.97.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.3.5",
+    "concurrently": "^9.2.1",
+    "esbuild": "^0.27.3",
+    "grunt": "^1.6.1",
+    "grunt-concurrent": "^3.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-shell": "^4.0.0",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
