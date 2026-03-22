@@ -1,6 +1,4 @@
-import { IAuthor } from './IAuthor';
-
 export interface IMusic {
-  author: IAuthor;
+  author: string;
   title: string;
 }

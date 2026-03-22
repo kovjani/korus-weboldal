@@ -1,20 +1,19 @@
 import { IMusic } from '../interfaces/models/IMusic';
-import { IAuthor } from '../interfaces/models/IAuthor';
 
 export class Music implements IMusic {
-  private _author: IAuthor;
+  private _author: string;
   private _title: string;
 
-  constructor(author: IAuthor, title: string) {
+  constructor(author: string, title: string) {
     this._author = author;
     this._title = title;
   }
 
-  get author(): IAuthor {
+  get author(): string {
     return this._author;
   }
 
-  set author(value: IAuthor) {
+  set author(value: string) {
     this._author = value;
   }
 
