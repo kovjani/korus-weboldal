@@ -28,6 +28,7 @@
     "express": "^5.2.1",
     "mysql": "^2.18.1",
     "mysql2": "^3.19.0",
+    "prettier": "^3.8.1",
     "sass": "^1.97.3"
   },
   "devDependencies": {
@@ -40,7 +41,9 @@
     "grunt-contrib-watch": "^1.1.0",
     "grunt-shell": "^4.0.0",
     "nodemon": "^3.1.7",
+    "prettier-plugin-ejs": "^1.0.3",
     "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.3"
   }
 }

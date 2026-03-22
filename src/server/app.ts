@@ -33,15 +33,15 @@ app.use(express.static(path.join(__dirname, '../../public')));
 
 // 6. Basic Route Example (The "C" in MVC would eventually go in /routes)
 app.get('/', (req: Request, res: Response) => {
-    res.render('index', {
-        title: 'Kórus weboldal',
-        message: 'Hello from TypeScript!' 
-    });
+  res.render('index', {
+    title: 'Kórus weboldal',
+    message: 'Hello from TypeScript!',
+  });
 });
 
 // 7. Start the Server
 app.listen(PORT, () => {
-    console.log(`
+  console.log(`
 🚀 Server is screaming at: http://localhost:${PORT}
 📂 Environment: ${process.env.NODE_ENV || 'development'}
     `);

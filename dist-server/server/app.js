@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, '../../public')));
 app.get('/', (req, res) => {
     res.render('index', {
         title: 'Kórus weboldal',
-        message: 'Hello from TypeScript!'
+        message: 'Hello from TypeScript!',
     });
 });
 // 7. Start the Server

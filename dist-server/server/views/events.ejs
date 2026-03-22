@@ -1,0 +1,7 @@
+<div class="events-container">
+  <div class="events-list">
+    <% events.forEach((event) => { %>
+    <%- include('components/event_card', {event: event}); %>
+    <%});%>
+  </div>
+</div>
