@@ -1,12 +1,14 @@
 import express, { Router, Request, Response } from 'express';
 import { PageDefinitions } from '../enums/PageDefinitions.js';
 import { EventService } from '../services/EventService.js';
+import { IEvent } from '../interfaces/models/IEvent';
+import { Event } from '../models/Event.js';
 
 const router: Router = express.Router();
 
 const eventService = new EventService();
 
-// Example REST API endpoints
+// REST API endpoints
 
 // GET /api/events - Get all events
 router.get('/events', (req: Request, res: Response) => {
@@ -36,26 +38,17 @@ router.get('/events', (req: Request, res: Response) => {
 
 // POST /api/events - Create a new event
 router.post('/events', (req: Request, res: Response) => {
-  const { title, description, links } = req.body;
-  // In a real app, validate and save to database
-  const event = { id: Date.now(), title, description, links };
-  res.status(201).json({
-    success: true,
-    data: event,
-    message: 'Esemény létrehozása sikeres.',
+  const event:IEvent = new Event(req.body);
+  eventService.saveEvent(event).then((success) => {
+   res.redirect(`/events`);
   });
 });
 
 // PUT /api/events/:id - Update event
 router.put('/events/:id', (req: Request, res: Response) => {
-  const eventId = parseInt(req.params.id as string);
-  const { title, description, links } = req.body;
-  // Mock update
-  const updatedEvent = { id: eventId, title, description, links };
-  res.json({
-    success: true,
-    data: updatedEvent,
-    message: 'Esemény módosítása sikeres.',
+  const event: IEvent = new Event(req.body);
+  eventService.saveEvent(event).then((success) => {
+    res.redirect(`/events`);
   });
 });
 
@@ -69,3 +62,5 @@ router.delete('/events/:id', (req: Request, res: Response) => {
 });
 
 export default router;
+
+

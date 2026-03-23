@@ -11,3 +11,5 @@ Hol tároljam a fájlokat? Hol és hogyan használjam őket? Mi a legjobb megold
 A nodejs projektem kliensoldalán van egy form, ami így érhető el: /events/:id
 Ha az id == 0, akkor legyen create post method, ha id > 0 akkor legyen update put method.
 Hogy csináljam a frontendet és a backendet?
+
+Hogy csinálok a req.body-ból Event objektumot a routs rétegben?

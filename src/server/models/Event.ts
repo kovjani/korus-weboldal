@@ -10,15 +10,15 @@ export class Event implements IEvent {
   private _place: string;
   private _title: string;
 
-  constructor(conductor: string, cover_image: string, date: string, description: string, id: number, local_folder: string, place: string, title: string) {
-    this._conductor = conductor;
-    this._cover_image = cover_image;
-    this._date = date;
-    this._description = description;
-    this._id = id;
-    this._local_folder = local_folder;
-    this._place = place;
-    this._title = title;
+  constructor(data: any) {
+    this._conductor = data.conductor;
+    this._cover_image = data.cover_image;
+    this._date = data.date;
+    this._description = data.description;
+    this._id = data.id;
+    this._local_folder = data.local_folder;
+    this._place = data.place;
+    this._title = data.title;
   }
 
   get conductor(): string {

@@ -1,5 +1,6 @@
 import {IEvent} from "../models/IEvent";
 
 export interface IEventRepository {
-    findAll(): IEvent[];
+    findAll(): Promise<IEvent[]>;
+    update(event: IEvent): Promise<boolean>;
 }
