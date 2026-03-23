@@ -13,3 +13,8 @@ Ha az id == 0, akkor legyen create post method, ha id > 0 akkor legyen update pu
 Hogy csináljam a frontendet és a backendet?
 
 Hogy csinálok a req.body-ból Event objektumot a routs rétegben?
+
+Arra gondoltam, hogy a service rétegben lenne egy find(data: any) metódus és itt eldöntjük, hogy a repositorynak melyik függvényét hívjuk meg a data tartalma alapján.
+A repository néhány metódusa: findById(id: number), find(keyword: string), ...
+
+A kontrollerben érdemes-e a create() update() delete() find() stb metódusokban a repository hívásokat try catch blokkba rakni?
