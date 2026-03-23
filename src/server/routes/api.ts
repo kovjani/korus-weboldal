@@ -23,32 +23,29 @@ router.get('/events', (req: Request, res: Response) => {
   });
 });
 
-// // GET /api/events/:id - Get event by ID (for editing)
-// router.get('/events/:id', (req: Request, res: Response) => {
-//   const eventId = parseInt(req.params.id as string);
-//   // Mock event data
-//
-//   res.json({
-//     success: true,
-//     pageNum: PageDefinitions.EventsForm,
-//     data: events,
-//     message: 'Esemény megnyitása szerkesztésre sikeres.',
-//   });
-// });
+// GET /api/events/:id - Get event by ID and render form
+// if id = 0 create
+// if id > 0 update
+router.get('/events/:id', (req: Request, res: Response) => {
+  const eventId = parseInt(req.params.id as string);
+  eventService.findById(eventId).then((event) => {
+    res.render('events_form', {
+      success: true,
+      pageNum: PageDefinitions.Events,
+      events: event,
+      title: 'Események',
+      message: 'Események lekérése sikeres.',
+    });
+  });
+});
 
-// POST /api/events - Create a new event
+// POST /api/events/ - Create or update event
+// if id = 0 create
+// if id > 0 update
 router.post('/events', (req: Request, res: Response) => {
   const event:IEvent = new Event(req.body);
   eventService.saveEvent(event).then((success) => {
    res.redirect(`/events`);
-  });
-});
-
-// PUT /api/events/:id - Update event
-router.put('/events/:id', (req: Request, res: Response) => {
-  const event: IEvent = new Event(req.body);
-  eventService.saveEvent(event).then((success) => {
-    res.redirect(`/events`);
   });
 });
 

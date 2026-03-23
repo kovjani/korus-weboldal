@@ -8,11 +8,14 @@ export class EventService {
     return this.eventRepository.findAll();
   }
 
-  async saveEvent(event: IEvent): Promise<boolean> {
+  public async findById(id: number): Promise<IEvent> {
+    return this.eventRepository.findById(id);
+  }
+
+  public async saveEvent(event: IEvent): Promise<boolean> {
     if (event.id > 0) {
       return await this.eventRepository.update(event);
-    } else {
-      return await this.eventRepository.create(event);
     }
+    return await this.eventRepository.create(event);
   }
 }

@@ -1,0 +1,12 @@
+<div class="events-form-container">
+  <form action="events" method="post">
+    <input type="hidden" name="event_id" value="<%= event.id %>">
+    <input type="text" name="event-title" value="<%= event.id > 0 ? event.title : '' %>">
+    <input type="text" name="event-place" value="<%= event.id > 0 ? event.place : '' %>">
+    <input type="text" name="event-date" value="<%= event.id > 0 ? event.date : '' %>">
+    <textarea name="event-description">
+       <%= event.id > 0 ? event.description : '' %>
+    </textarea>
+    <input type="submit" value="Küldés">
+  </form>
+</div>
