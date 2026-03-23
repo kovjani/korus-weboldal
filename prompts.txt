@@ -1,0 +1,13 @@
+I want to create a nodejs project using mvc pattern. I want to use express.js, ejs server side rendering, mysql database, typescript and scss. How to create the project? Which packages should I install? How should the project structure like?
+
+Van egy Event class ami implementálja az IEvent interfészt.
+
+Ha szeretném példányosítani az Event class-t, akkor az objektum lehet IEvent típusú?
+
+Egy nodejs projektben szeretnék mysql táblákat létrehozni, de csak egyszer, utána azokat használni. Csinálnék erre egy install.sql fájlt valahova. Hol és hogyan kell ezt használni?
+Ha már készen vannak a táblák akkor kapcsolódni szeretnék az adatbázishoz, az ehhez tartozó adatokat egy külön konfigurációs fájlban tárolnám, amit felhasználnék a repositoryban.
+Hol tároljam a fájlokat? Hol és hogyan használjam őket? Mi a legjobb megoldás?
+
+A nodejs projektem kliensoldalán van egy form, ami így érhető el: /events/:id
+Ha az id == 0, akkor legyen create post method, ha id > 0 akkor legyen update put method.
+Hogy csináljam a frontendet és a backendet?
