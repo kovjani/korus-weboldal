@@ -28,14 +28,14 @@ export class EventRepository {
   public async update(event: IEvent): Promise<boolean> {
     const [result] = await pool.execute<ResultSetHeader>(
       `UPDATE events SET 
-                title = :title,
-                date = :date,
-                place = :place,
-                conductor = :conductor,
-                description = :description,
-                local_folder = :localFolder,
-                cover_image = :coverImage
-              WHERE id = :eventId`,
+        title = :title,
+        date = :date,
+        place = :place,
+        conductor = :conductor,
+        description = :description,
+        local_folder = :localFolder,
+        cover_image = :coverImage
+      WHERE id = :eventId`,
       {
         eventId: event.id,
         title: event.title,

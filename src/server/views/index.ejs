@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
+    <title>Kórus</title>
     <script src="/js/bundle.js"></script>
     <link rel="stylesheet" href="/css/style.css" />
     <link
@@ -16,15 +16,15 @@
     <% if (typeof pageNum !== 'undefined') { %>
 
     <% if (pageNum === 1) { -%>
-    <%- include('events.ejs') -%>
+    <%- include('pages/event_list') -%>
     <% } else if (pageNum === 2) { -%>
-    <%- include('events_form.ejs') -%>
+    <%- include('pages/event_form') -%>
     <% } else { -%>
-    <%- include('events.ejs') -%>
+    <%- include('pages/home') -%>
     <% } -%>
 
     <% } else { -%>
-    <%- include('events.ejs') -%>
+    <%- include('pages/home') -%>
     <% } -%>
   </body>
 </html>

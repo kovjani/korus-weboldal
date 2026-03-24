@@ -1,7 +1,12 @@
 <div class="event-card">
   <div>
-    <a href="/events/<%= event.id %>>"><span class="material-symbols-outlined">edit</span></a>
-    <a href="/events/<%= event.id %>"><span class="material-symbols-outlined">delete</span></a>
+    <a href="/api/events/<%= event.id %>">
+      <span class="material-symbols-outlined">edit</span>
+    </a>
+    <br />
+    <button class="delete-btn" data-id="<%= event.id %>">
+      <span class="material-symbols-outlined">delete</span>
+    </button>
   </div>
   <div class="event-title"><%= event.title %></div>
   <div class="event-title"><%= event.place %></div>

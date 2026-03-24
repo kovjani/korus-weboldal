@@ -1,5 +1,5 @@
+import { EventRepository } from '../repositories/EventRepository.js';
 import { IEvent } from '../interfaces/models/IEvent';
-import { EventRepository } from '../repositories/EventRepository';
 import { IEventFilter } from '../interfaces/filters/IEventFilter';
 
 export class EventService {

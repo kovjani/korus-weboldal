@@ -8,24 +8,6 @@ const router: Router = express.Router();
 
 const eventService = new EventService();
 
-const save = async (req: Request, res: Response) => {
-  try {
-    const event: IEvent = new Event(req.body);
-    const success = await eventService.save(event);
-
-    if (success) {
-      return res.redirect('/events');
-    } else {
-      return res.status(404).json({
-        error: 'Hiba történt az esemény mentése során.',
-      });
-    }
-  } catch (error) {
-    console.error('Hiba történt:', error);
-    return res.status(500).json({ error: 'Szerver hiba' });
-  }
-};
-
 // REST API endpoints
 
 // GET /api/events - Get all events
@@ -54,12 +36,42 @@ router.get('/events/:id', async (req: Request, res: Response) => {
 });
 
 // POST /api/events/ - Create an event
-// id = 0
-router.post('/events', save);
+router.post('/events', async (req: Request, res: Response) => {
+  try {
+    const event: IEvent = new Event(req.body);
+    const success = await eventService.save(event);
+
+    if (success) {
+      return res.status(201).json({ message: 'Fellépés létrehozása sikeres.' });
+    } else {
+      return res.status(404).json({
+        error: 'Hiba történt a fellépés létrehozása során.',
+      });
+    }
+  } catch (error) {
+    console.error('Hiba történt:', error);
+    return res.status(500).json({ error: 'Szerver hiba' });
+  }
+});
 
 // PUT /api/events/ - Update an event
-// id > 0
-router.put('/events/:id', save);
+router.put('/events/:id', async (req: Request, res: Response) => {
+  try {
+    const event: IEvent = new Event(req.body);
+    const success = await eventService.save(event);
+
+    if (success) {
+      return res.status(200).json({ message: 'Fellépés szerkeztése sikeres.' });
+    } else {
+      return res.status(404).json({
+        error: 'Hiba történt a fellépés szerkeztése során.',
+      });
+    }
+  } catch (error) {
+    console.error('Hiba történt:', error);
+    return res.status(500).json({ error: 'Szerver hiba' });
+  }
+});
 
 // DELETE /api/events/:id - Delete an event
 router.delete('/events/:id', async (req: Request, res: Response) => {
@@ -68,10 +80,10 @@ router.delete('/events/:id', async (req: Request, res: Response) => {
     const success = await eventService.delete(eventId);
 
     if (success) {
-      return res.redirect('/events');
+      return res.status(200).json({ message: 'Fellépés törlése sikeres.' });
     } else {
       return res.status(404).json({
-        error: 'Hiba történt az esemény törlése során.',
+        error: 'Hiba történt a fellépés törlése során.',
       });
     }
   } catch (error) {

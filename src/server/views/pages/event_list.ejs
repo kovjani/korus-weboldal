@@ -1,0 +1,9 @@
+<div class="events-container">
+  <%- include('../components/search_bar') %>
+  <a href="/api/events/0"><span class="material-symbols-outlined">add</span></a>
+  <div class="events-list">
+    <% events.forEach((event) => { %>
+    <%- include('../components/event_card', {event: event}); %>
+    <% }); %>
+  </div>
+</div>
