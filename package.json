@@ -1,7 +1,7 @@
 {
   "name": "korus-weboldal",
   "version": "1.0.0",
-  "description": "Programrendszerek fejlesztese beadando.",
+  "description": "Programrendszerek fejlesztése beadandó.",
   "repository": {
     "type": "git",
     "url": "korus-weboldal"
@@ -9,16 +9,15 @@
   "license": "ISC",
   "author": "Kovács János András",
   "type": "module",
-  "main": "dist/server/app.js",
+  "main": "dist/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build:server": "tsc",
-    "build:fe-ts": "esbuild src/client/ts/main.ts --bundle --outfile=public/js/bundle.js --minify",
-    "build:scss": "sass src/client/scss/main.scss public/css/style.css",
-    "build": "npm run build:server && npm run build:fe-ts && npm run build:scss",
-    "watch:server": "npx nodemon --exec \"node --loader ts-node/esm\" src/server/app.ts",
-    "watch:fe-ts": "esbuild src/client/ts/main.ts --bundle --outfile=public/js/bundle.js --watch",
-    "watch:scss": "sass --watch src/client/scss/main.scss:public/css/style.css",
+    "build:fe-ts": "esbuild src/public/ts/*.ts --outdir=dist/public/js --bundle --minify --platform=browser",
+    "build:scss": "sass src/public/scss/event_list.scss dist/public/css/style.css",
+    "build": "npm run build:server && npm run build:fe-ts && npm run build:scss && cp -r src/views dist/",
+    "watch:server": "nodemon --exec \"node --loader ts-node/esm\" src/app.ts",
+    "watch:fe-ts": "esbuild src/public/ts/*.ts --outdir=dist/public/js --bundle --watch",
+    "watch:scss": "sass --watch src/public/scss/main.scss:dist/public/css/style.css",
     "watch": "grunt",
     "start": "node dist/app.js"
   },

@@ -10,21 +10,21 @@ module.exports = function (grunt) {
     },
     watch: {
       server: {
-        files: ['src/server/**/*.ts'],
+        files: ['src/**/*.ts'],
         tasks: ['shell:buildServer'],
         options: {
           spawn: false,
         },
       },
       'fe-ts': {
-        files: ['src/client/ts/**/*.ts'],
+        files: ['src/public/ts/**/*.ts'],
         tasks: ['shell:buildFE'],
         options: {
           spawn: false,
         },
       },
       scss: {
-        files: ['src/client/scss/**/*.scss'],
+        files: ['src/public/scss/**/*.scss'],
         tasks: ['shell:buildSCSS'],
         options: {
           spawn: false,
@@ -36,10 +36,12 @@ module.exports = function (grunt) {
         command: 'tsc',
       },
       buildFE: {
-        command: 'esbuild src/client/ts/main.ts --bundle --outfile=public/js/bundle.js --minify',
+        command:
+          'esbuild src/public/ts/**/*.ts --outdir=dist/public/js --bundle --minify',
       },
       buildSCSS: {
-        command: 'sass src/client/scss/main.scss public/css/style.css',
+        command:
+          'sass src/public/scss/event_list.scss dist/public/css/style.css',
       },
     },
   });

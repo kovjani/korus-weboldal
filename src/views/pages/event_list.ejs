@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="hu">
+  <head>
+    <%- include('../components/common_head') %>
+    <title>Fellépések</title>
+    <script src="/js/event_list.js"></script>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body>
+    <div class="event-list-container">
+      <%- include('../components/search_bar') %>
+      <a href="/api/events/0"><span class="material-icons">add</span></a>
+      <div class="event-list">
+        <% events.forEach((event) => { %>
+        <%- include('../components/event_card', {event: event}); %>
+        <% }); %>
+      </div>
+    </div>
+  </body>
+</html>

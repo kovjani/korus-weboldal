@@ -1,26 +1,16 @@
 {
   "compilerOptions": {
-    /* Target & Module */
     "target": "ES2020",
     "module": "ES2020",
     "moduleResolution": "node",
     "outDir": "./dist",
     "rootDir": "./src",
-
-    /* Strictness & Safety */
     "strict": true,
-    "noImplicitAny": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "strictNullChecks": false,
-
-    /* Paths */
-    "baseUrl": ".",
-    "paths": {
-      "*": ["node_modules/*"]
-    }
+    "strictNullChecks": false
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "public"]
+  "exclude": ["node_modules", "dist", "src/public/ts"]
 }
