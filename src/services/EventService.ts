@@ -3,7 +3,7 @@ import { IEventFilter } from '../interfaces/filters/IEventFilter';
 import { ChoirEvent } from '../models/ChoirEvent.js';
 
 export class EventService {
-  private eventRepository = new EventRepository();
+  constructor(private eventRepository: EventRepository) {}
 
   public async find(filter?: IEventFilter): Promise<ChoirEvent[] | null> {
     if (!filter) {

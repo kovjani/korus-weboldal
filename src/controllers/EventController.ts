@@ -3,14 +3,14 @@ import { EventService } from '../services/EventService.js';
 import { ChoirEvent } from '../models/ChoirEvent.js';
 
 export class EventController {
-  private eventService = new EventService();
+  constructor(private eventService: EventService) {}
 
   public getAll = async (req: Request, res: Response) => {
     const events = await this.eventService.find();
-
-    return res.render('pages/event_list', {
+    return res.status(201).json({
       success: true,
       events: events,
+      user: (req as any).user,
     });
   };
 
@@ -18,9 +18,7 @@ export class EventController {
     const eventId = parseInt(req.params.id as string);
     const event = await this.eventService.find({ id: eventId });
 
-    //console.log(event[0].dateString);
-
-    return res.render('pages/event_form', {
+    return res.status(201).json({
       success: true,
       event: event[0],
     });

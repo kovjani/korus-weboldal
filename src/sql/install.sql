@@ -18,7 +18,16 @@ CREATE TABLE IF NOT EXISTS `music` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `music_to_events` (
-  `music` int(11) NOT NULL,
-  `event` int(11) NOT NULL,
-  PRIMARY KEY (music, event)
+    `music` int(11) NOT NULL,
+    `event` int(11) NOT NULL,
+    PRIMARY KEY (music, event)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS `users` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `name` varchar(255) NOT NULL,
+    `username` varchar(255) NOT NULL,
+    `password` varchar(255) NOT NULL,
+    `admin` tinyint(1) NOT NULL DEFAULT 0,
+    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

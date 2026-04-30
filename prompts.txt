@@ -1,8 +1,4 @@
-I want to create a nodejs project using mvc pattern. I want to use express.js, ejs server side rendering, mysql database, typescript and scss. How to create the project? Which packages should I install? How should the project structure like?
-
-Van egy Event class ami implementálja az IEvent interfészt.
-
-Ha szeretném példányosítani az Event class-t, akkor az objektum lehet IEvent típusú?
+Szeretnék létrehozni egy Node.js projektet MVC mintát használva. Express.js-t, EJS szerveroldali renderelést, MySQL adatbázist, TypeScriptet és SCSS-t szeretnék használni. Hogyan hozzam létre a projektet? Milyen csomagokat kell telepítenem? Hogyan nézzen ki a projekt felépítése?
 
 Egy nodejs projektben szeretnék mysql táblákat létrehozni, de csak egyszer, utána azokat használni. Csinálnék erre egy install.sql fájlt valahova. Hol és hogyan kell ezt használni?
 Ha már készen vannak a táblák akkor kapcsolódni szeretnék az adatbázishoz, az ehhez tartozó adatokat egy külön konfigurációs fájlban tárolnám, amit felhasználnék a repositoryban.
@@ -18,3 +14,47 @@ Arra gondoltam, hogy a service rétegben lenne egy find(data: any) metódus és 
 A repository néhány metódusa: findById(id: number), find(keyword: string), ...
 
 A kontrollerben érdemes-e a create() update() delete() find() stb metódusokban a repository hívásokat try catch blokkba rakni?
+
+Bejelentkezés és regisztráció route-ok hogy nézzenek ki?
+
+Hogyan érdemes használni a userModel osztályt az adatbázishoz? Hogyan érdemes használni az egyes oyztályokban illetve rétegekben?
+
+Hogy nézzen ki a handleLogin? Token alapú autentikációt használj!
+
+Van egy nodejs alkalmazásom. Be lehet jelentkezni és a bejelentkezett felhasználó tud  szerkezteni bizonyos adatokat. Több oldal is van az oldalon.
+Nem szeretnék mindig minden egyes oldalt újratölteni csak azokat a változtatásokat amiket muszáj (ajax)
+EJS SSR-t használok
+Hogy hozzam létre az ejs fájlokat? Adj példákat, legyen egy főoldal, ahonnan elérhető 2 al oldal és az oldalakon legyen más-más lehetőség ha bejelentkezett a felhasználó.
+Typescript osztályokat használok minden oldalhoz mást. Hogy töltsem be a typescriptet? hogy használjak scss-t, minden oldalon különbözőt?
+
+FRONTED:
+
+Egy kórusweboldalt szeretnék csinálni. Csináld meg a frontendet angular-ban és használj google materialst.
+Ezen a weboldalon legyen egy navbar, legyenek rajta az alábbi oldalak:
+1. Regisztráció
+2. Bejelentkezés
+3. Fellépések:
+- Cím
+- Dátum
+- Helyszín
+- Leírás
+- Ha a bejelentkezett user admin, akkor létrehozhat illetve kitörölhet fellépéseket (kuka és hozzáadás gombok)
+4. Legyen egy Fellépések Form, amit csak az admin user ér el.
+Nodejs backend már van hozzá, rakd össze a frontendet.
+
+Vajon miért nem működik a navigáció?
+ERROR Error: NG04002: Cannot match any routes. URL Segment: 'login'
+
+A register illetve login komponensek hogy néznek ki?
+
+Regisztrációs hibát kapok amikor regisztrálok. Szerintem valamiért nem küld post kérést az angular project.
+Cross-Origin Request Blocked errort kapok.
+A cors error eltűnt de továbbra sem működik.
+
+Az events-list oldalon néha megjelennek az adatok néha nem. Szerintem itt valami olyasmi történik,
+hogy elküldi a szervernek a kérést, de nem várja meg, hanem megy tovább és kirendereli a HTML-t. Hogy kell megvárni a szervert?
+
+Fellépések szerkeztéséhez hogyan kell összerakni egy formot? Hogy működik a beküldés? Csak admin tudja használni.
+
+Ha admin a felhasználó, akkor tudja módosítani a fellépéseket. Az event-list komponensben minden fellépésnél jelenjen meg egy edit gomb,
+ami az event-form-ra navigál és a megfelelő fellépés adatait betölti valamint szerkezthetővé teszi.
