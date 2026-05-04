@@ -20,10 +20,14 @@
           <input matInput type="password" formControlName="password">
         </mat-form-field>
 
-        <p class="info" [class.error]="message.includes('hiba')">{{ message }}</p>
+        <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
 
         <button mat-raised-button color="accent" type="submit" [disabled]="!regForm.valid">
-          Fiók létrehozása
+          @if (isLoading()) {
+            <mat-spinner diameter="24" color="accent"></mat-spinner>
+          } @else {
+            <span>Regisztráció</span>
+          }
         </button>
       </form>
     </mat-card-content>

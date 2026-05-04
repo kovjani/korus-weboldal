@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-register',
@@ -18,13 +19,15 @@ import { Router } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatProgressSpinner,
   ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
   regForm: FormGroup;
-  message: string = '';
+  errorMessage: string = '';
+  isLoading = signal(false);
 
   constructor(
     private fb: FormBuilder,
@@ -40,12 +43,15 @@ export class RegisterComponent {
 
   onSubmit() {
     if (this.regForm.valid) {
+      this.isLoading.set(true);
       this.authService.register(this.regForm.value).subscribe({
         next: () => {
-          this.message = 'Sikeres regisztráció!';
-          setTimeout(() => this.router.navigate(['/login']), 2000);
+          this.router.navigate(['/login']);
         },
-        error: (err) => (this.message = err.error.message || 'Regisztrációs hiba!'),
+        error: (err) => {
+          this.isLoading.set(false);
+          this.errorMessage = err.error.message || 'Regisztrációs hiba!';
+        },
       });
     }
   }

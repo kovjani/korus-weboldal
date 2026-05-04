@@ -18,7 +18,11 @@
         <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
 
         <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">
-          Belépés
+          @if (isLoading()) {
+            <mat-spinner diameter="24" color="accent"></mat-spinner>
+          } @else {
+            <span>Bejelentkezés</span>
+          }
         </button>
       </form>
     </mat-card-content>

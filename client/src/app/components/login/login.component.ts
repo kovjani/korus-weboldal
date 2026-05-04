@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ import { Router } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatProgressSpinner,
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
@@ -25,6 +27,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginForm: FormGroup;
   errorMessage: string = '';
+  isLoading = signal(false);
 
   constructor(
     private fb: FormBuilder,
@@ -39,9 +42,13 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
+      this.isLoading.set(true);
       this.authService.login(this.loginForm.value).subscribe({
         next: () => this.router.navigate(['/event-list']),
-        error: (err) => (this.errorMessage = err.error.message || 'Hiba a bejelentkezés során!'),
+        error: (err) => {
+          this.isLoading.set(false);
+          this.errorMessage = err.error.message || 'Hiba a bejelentkezés során!';
+        },
       });
     }
   }
