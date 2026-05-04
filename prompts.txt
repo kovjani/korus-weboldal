@@ -58,3 +58,6 @@ Fellépések szerkeztéséhez hogyan kell összerakni egy formot? Hogy működik
 
 Ha admin a felhasználó, akkor tudja módosítani a fellépéseket. Az event-list komponensben minden fellépésnél jelenjen meg egy edit gomb,
 ami az event-form-ra navigál és a megfelelő fellépés adatait betölti valamint szerkezthetővé teszi.
+
+Az event-list komponensben lehessen keresni a fellépések között, legyen egy külön search-bar komponens erre.
+Ha a beírt kulcsszó szerepel egy fellépésben (title, place, date, description), akkor jelenjen meg.

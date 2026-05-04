@@ -1,29 +1,48 @@
 <div class="list-container">
-  <div class="header" *ngIf="authService.isAdmin()">
-    <h2>Fellépések kezelése</h2>
-    <button mat-raised-button color="accent" routerLink="/event-form">
-      <mat-icon>add</mat-icon> Új hozzáadása
-    </button>
+  <div class="header">
+    <div class="title-section">
+      <h2 *ngIf="authService.isAdmin()">Fellépések kezelése</h2>
+      <h2 *ngIf="!authService.isAdmin()">Fellépések</h2>
+
+      <button mat-raised-button color="accent" routerLink="/event-form" *ngIf="authService.isAdmin()">
+        <mat-icon>add</mat-icon> Új hozzáadása
+      </button>
+    </div>
+
+    <mat-form-field appearance="outline" class="search-bar">
+      <mat-label>Keresés</mat-label>
+      <input matInput (input)="onSearch($event)" placeholder="Kezdj el gépelni...">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
   </div>
 
-  <mat-card *ngFor="let p of (events$ | async)" class="perf-card">
-    <mat-card-header>
-      <mat-card-title>{{p.title}}</mat-card-title>
-      <mat-card-subtitle>{{p.date | date:'yyyy.MM.dd'}} | {{p.place}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>{{p.description}}</p>
-    </mat-card-content>
-    <mat-card-actions *ngIf="authService.isAdmin()">
-      <button mat-icon-button color="primary"
-              [routerLink]="['/event-form', p.id]"
-              [state]="{ data: p }">
-        <mat-icon>edit</mat-icon>
-      </button>
+  <div class="grid-container">
+    <mat-card *ngFor="let p of (filteredEvents$ | async)" class="perf-card">
+      <mat-card-header>
+        <mat-card-title>{{p.title}}</mat-card-title>
+        <mat-card-subtitle>{{p.date | date:'yyyy.MM.dd'}} | {{p.place}}</mat-card-subtitle>
+      </mat-card-header>
 
-      <button mat-icon-button color="warn" (click)="deleteEvent(p.id)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </mat-card-actions>
-  </mat-card>
+      <mat-card-content>
+        <p>{{p.description}}</p>
+      </mat-card-content>
+
+      <mat-card-actions *ngIf="authService.isAdmin()">
+        <button mat-icon-button color="primary"
+                [routerLink]="['/event-form', p.id]"
+                [state]="{ data: p }">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" (click)="deleteEvent(p.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div *ngIf="(filteredEvents$ | async)?.length === 0" class="no-results">
+    <mat-icon>search_off</mat-icon>
+    <p>Nincs a keresésnek megfelelő fellépés.</p>
+  </div>
 </div>
