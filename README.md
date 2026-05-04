@@ -16,6 +16,7 @@ DB_NAME=database
 cd server
 npm i
 npm run build
+npm run start
 ```
 
 <h3>Frontend a korus-weboldal mappából</h3>
