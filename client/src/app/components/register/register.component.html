@@ -1,0 +1,31 @@
+<div class="auth-container">
+  <mat-card class="auth-card">
+    <mat-card-header>
+      <mat-card-title>Regisztráció</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline">
+          <mat-label>Teljes név</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Felhasználónév</mat-label>
+          <input matInput formControlName="username">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Jelszó</mat-label>
+          <input matInput type="password" formControlName="password">
+        </mat-form-field>
+
+        <p class="info" [class.error]="message.includes('hiba')">{{ message }}</p>
+
+        <button mat-raised-button color="accent" type="submit" [disabled]="!regForm.valid">
+          Fiók létrehozása
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

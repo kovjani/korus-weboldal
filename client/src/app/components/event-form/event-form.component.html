@@ -1,0 +1,7 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="event-form">
+  <mat-form-field><mat-label>Cím</mat-label><input matInput formControlName="title"></mat-form-field>
+  <mat-form-field><mat-label>Dátum</mat-label><input matInput type="date" formControlName="date"></mat-form-field>
+  <mat-form-field><mat-label>Helyszín</mat-label><input matInput formControlName="place"></mat-form-field>
+  <mat-form-field><mat-label>Leírás</mat-label><textarea matInput formControlName="description"></textarea></mat-form-field>
+  <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Mentés</button>
+</form>

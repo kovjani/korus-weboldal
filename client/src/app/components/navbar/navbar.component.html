@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <span>Kórus</span>
+  <span class="spacer"></span>
+  @if (authService.isLoggedIn()) {
+    <button mat-button routerLink="/event-list">Fellépések</button>
+    <button mat-button (click)="authService.logout()">Kijelentkezés</button>
+  } @else {
+    <button mat-button routerLink="/register">Regisztráció</button>
+    <button mat-button routerLink="/login">Bejelentkezés</button>
+  }
+</mat-toolbar>
