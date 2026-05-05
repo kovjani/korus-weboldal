@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/ApGWrhYx)
-
->>>>>>> 92653e2bb7122d78cd2530e18b9d44bab02b481f
 <h3>Adatbázis telepítése</h3>
 
 - server/src/sql mappa tartalmazza az install.sql fájlt. Ezzel lehet létrehozni az adatbázissémát.
